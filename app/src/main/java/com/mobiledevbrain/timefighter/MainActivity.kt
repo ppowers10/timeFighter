@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         setupViews()
         setupViewsInitialState()
+        setupTimer()
     }
 
     private fun setupViews() {
@@ -43,9 +44,7 @@ class MainActivity : AppCompatActivity() {
         timeLeftTextView.text = getString(R.string.time_left, initialTimeLeft.toString())
     }
 
-    private fun resetGame() {
-        setupViewsInitialState()
-
+    private fun setupTimer() {
         countDownTimer = object: CountDownTimer(initialCountDown, countDownInterval) {
             override fun onTick(millisUntilFinished: Long) {
                 val timeLeft = millisUntilFinished / 1000
@@ -56,14 +55,25 @@ class MainActivity : AppCompatActivity() {
                 TODO("not implemented")
             }
         }
+    }
 
+    private fun startGame() {
+        if (!gameStarted) {
+            countDownTimer.start()
+            gameStarted = true
+        }
+    }
+
+    private fun resetGame() {
+        setupViewsInitialState()
+        setupTimer()
         gameStarted = false
-
     }
 
 
 
     private fun incrementScore() {
+        startGame()
         score += 1
         val newScore = getString(R.string.game_score, score.toString())
         gameScoreTextView.text = newScore
