@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     private var score = 0
     private var gameStarted = false
     private lateinit var countDownTimer: CountDownTimer
-    internal var initialCountDown: Long = 60000
+    internal var initialCountDown: Long = 5000
     internal var countDownInterval: Long = 1000
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,7 +53,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFinish() {
-                TODO("not implemented")
+                Toast.makeText(this@MainActivity, getString(R.string.game_over_message, score.toString()), Toast.LENGTH_SHORT).show()
+                resetGame()
             }
         }
     }
@@ -67,11 +69,10 @@ class MainActivity : AppCompatActivity() {
     private fun resetGame() {
         setupViewsInitialState()
         setupTimer()
+        score = 0
         gameStarted = false
     }
-
-
-
+    
     private fun incrementScore() {
         startGame()
         score += 1
