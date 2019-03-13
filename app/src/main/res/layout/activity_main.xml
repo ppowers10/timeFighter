@@ -8,21 +8,21 @@
         tools:context=".MainActivity">
 
     <TextView
-            android:text="Your Score: %s"
+            android:text="@string/game_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView" android:layout_marginTop="8dp"
+            android:id="@+id/game_score" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"/>
     <TextView
-            android:text="Time Left: %s"
+            android:text="@string/time_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView2" android:layout_marginTop="8dp"
+            android:id="@+id/time_left" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp"/>
     <Button
-            android:text="Tap Me"
+            android:text="@string/tap_me_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tap_me_button" app:layout_constraintStart_toStartOf="parent"
